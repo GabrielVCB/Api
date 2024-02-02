@@ -1,7 +1,6 @@
-//import http from "http";
-import app from './src/app.js';
+import app from "./src/app.js";
 
-const PORT = 7000;
+const PORT = 12340;
 
 app.listen(PORT, () => {
     console.log("Servidor em execução!")
