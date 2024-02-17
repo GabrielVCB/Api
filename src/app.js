@@ -36,10 +36,12 @@ app.get("/clientes", async (req, res) => {
 })
 
 //Consultar o cliente pelo id
-app.get("/clientes/:id", (req, res) => {
-    const index = buscarCliente(req.params.id); // (req.params.id) traz o parametro id na requisicao
-    res.status(200).json(clientes[index]) // clientes é array, index recebeu o retorno da busca
+app.get("/clientes/:nome", async (req, res) => {
+    const nomeParam = req.params.nome.toUpperCase(); //.replace("-", "")
+    const listaClientes = await cliente.find({nome: nomeParam}); 
+    res.status(200).json(listaClientes);
 })
+
 
 //Cadastrar novo cliente
 app.post("/clientes", (req, res) => {
